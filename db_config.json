@@ -1,0 +1,7 @@
+{
+    "server": "localhost",
+    "port": "1433",
+    "database": "dioBootcamp",
+    "user": "sa",
+    "password": "Sqls3rv3r!"
+}
