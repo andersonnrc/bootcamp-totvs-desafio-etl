@@ -25,7 +25,7 @@ O projeto foi construído de forma modularizada e desacoplada, utilizando **Dock
    - Consumo da API REST local via pacote `requests`.
    - Integração com a **API da Groq** (utilizando o modelo de baixíssima latência `llama-3.1-8b-instant`).
    - Geração de mensagens de marketing hiper-personalizadas baseadas no nome do cliente.
-   - Gravação do histórico das mensagens geradas de volta no SQL Server, alimentando a tabela `MensagensMarketing`.
+   - Gravação do histórico das mensagens geradas de volta no SQL Server, alimentando a tabela `tb_mensagens_marketing`.
 
 ## ⚙️ Pré-requisitos e Configuração
 
@@ -57,4 +57,33 @@ Executar comando a seguir para instalar pacotes necessários para as aplicaçõe
 ```bash
 pip install -r requirements.txt
 ```
+## 🚀 Execução das aplicações
 
+### 1. Executar a carga dos dados
+
+Executar no terminal o comando a seguir para acessar scripts do Jupyter Notebook:
+```bash
+jupyter notebook
+```
+Caso o Jupyter Notebook não abra, basta digitar em qualquer browser: `localhost:8888`
+
+Com o Jupyter notebook aberto, basta executar todas as células do script `carga_dados.ipynb` cujo resultado é exibido na imagem a seguir:
+![](/images/result_exec_load.png "Resultado da carga dos dados")
+
+A próxima etapa é subir a api REST. Para este passo, abra outro terminal na pasta do projeto e execute os mesmos passos para ativação do ambiente virtual `DIO_Bootcamp_Totvs_IA`. Com o ambiente virtual ativado, execute o comando a seguir:
+```bash
+python api.py
+```
+
+O último passo será executar o script `app_ia.ipynb`. É possível que apresente algum erro ao executar todas as células no browser. Para contornar esse problema, será necessário executar o comando a seguir no terminal do ambiente virtual ativado:
+```bash
+python -m ipykernel install --user --name=DIO_Bootcamp_Totvs_IA --display-name "Python (DIO Bootcamp Totvs IA)"
+```
+No script do Jupyter Notebook no browser, há uma alteração a ser feita. Acessar a opção `Kernel -> Change Kernel` e escolher a opção `Python (DIO Bootcamp Totvs IA)`.
+
+Após essas configurações, pode executar todas as células do script `app_ia.ipynb` cujo resultado é exibido na imagem a seguir
+![](/images/result_exec_ia.png "Resultado da geração das mensagens personalizadas com IA")
+
+## 🧑‍💼 Contato
+
+[Linkedin](https://www.linkedin.com/in/anderson-ribeiro-carvalho)
