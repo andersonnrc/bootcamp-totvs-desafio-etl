@@ -72,6 +72,7 @@ jupyter notebook
 Caso o Jupyter Notebook não abra, basta digitar em qualquer browser: `localhost:8888`
 
 Com o Jupyter notebook aberto, basta executar todas as células do script `carga_dados.ipynb` cujo resultado é exibido na imagem a seguir:
+
 ![](/images/result_exec_load.png "Resultado da carga dos dados")
 
 A próxima etapa é subir a api REST. Para este passo, abra outro terminal na pasta do projeto e execute os mesmos passos para ativação do ambiente virtual `DIO_Bootcamp_Totvs_IA`. Com o ambiente virtual ativado, execute o comando a seguir:
@@ -85,7 +86,8 @@ python -m ipykernel install --user --name=DIO_Bootcamp_Totvs_IA --display-name "
 ```
 No script do Jupyter Notebook no browser, há uma alteração a ser feita. Acessar a opção `Kernel -> Change Kernel` e escolher a opção `Python (DIO Bootcamp Totvs IA)`.
 
-Após essas configurações, pode executar todas as células do script `app_ia.ipynb` cujo resultado é exibido na imagem a seguir
+Após essas configurações, pode executar todas as células do script `app_ia.ipynb` cujo resultado é exibido na imagem a seguir:
+
 ![](/images/result_exec_ia.png "Resultado da geração das mensagens personalizadas com IA")
 
 ## 🧑‍💼 Contato
