@@ -57,6 +57,10 @@ Executar comando a seguir para instalar pacotes necessários para as aplicaçõe
 ```bash
 pip install -r requirements.txt
 ```
+### 4. Instalando o driver oficial da Microsoft para o SQL Server
+
+Para este mini-projeto, foi utilizado o Windows 11. Então antes da execução das aplicações, será necessário instalar o driver oficial da Microsoft: `Microsoft ODBC Driver 17 for SQL Server`. Importante lembrar que já existe uma versão mais atual desse driver. Caso seja instalada a versão 18, será necessário alterar a versão nos códigos onde estão as configurações de conexão do banco de dados.
+
 ## 🚀 Execução das aplicações
 
 ### 1. Executar a carga dos dados

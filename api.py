@@ -14,7 +14,6 @@ with open('db_config.json', 'r') as f:
     DB_CONFIG = json.load(f)
 
 def obter_conexao():
-    """Cria a engine de conexão com o SQL Server."""
     senha_codificada = urllib.parse.quote_plus(DB_CONFIG['password'])
     string_conexao = (
         f"mssql+pyodbc://{DB_CONFIG['user']}:{senha_codificada}"
@@ -28,11 +27,9 @@ def obter_conexao():
 # ==========================================
 @app.route('/api/usuarios', methods=['GET'])
 def get_usuarios():
-    """Consulta o banco de dados e retorna a lista de usuários em JSON."""
     try:
         engine = obter_conexao()
         
-        # Leitura dos dados com Pandas
         df = pd.read_sql("SELECT id, nome FROM tb_usuarios", engine)
         
         # Conversão para lista de dicionários (padrão JSON)
