@@ -1,39 +1,13 @@
 from flask import Flask, jsonify
 import pandas as pd
-from sqlalchemy import create_engine
-import urllib.parse
-import json
+from database import criar_engine
 
 # ==========================================
 # 1. INICIALIZAÇÃO DO FLASK E CONFIGURAÇÕES
 # ==========================================
 app = Flask(__name__)
 
-# Lê as credenciais do arquivo JSON
-with open('db_config.json', 'r') as f:
-    DB_CONFIG = json.load(f)
-
-def criar_engine():
-    params = urllib.parse.quote_plus(
-        f"DRIVER={{ODBC Driver 18 for SQL Server}};"
-        f"SERVER={DB_CONFIG['server']},{DB_CONFIG['port']};"
-        f"DATABASE={DB_CONFIG['database']};"
-        f"UID={DB_CONFIG['user']};"
-        f"PWD={DB_CONFIG['password']};"
-        f"Encrypt=yes;"
-        f"TrustServerCertificate=yes;"
-    )
-
-    string_conexao = f"mssql+pyodbc:///?odbc_connect={params}"
-
-    return create_engine(
-        string_conexao,
-        pool_pre_ping=True,   # evita conexões mortas
-        pool_size=5,          # número de conexões no pool
-        max_overflow=10       # conexões extras se necessário
-    )
-
-# 🔥 Engine global (criada uma única vez)
+# 🔥 Engine global
 engine = criar_engine()
 
 # ==========================================
