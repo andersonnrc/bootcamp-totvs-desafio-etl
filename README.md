@@ -11,6 +11,8 @@
 ## 📌 Sobre o Projeto
 Este projeto é uma solução *End-to-End* (Ponta a Ponta) que integra Engenharia de Dados, Desenvolvimento Backend (Microsserviço) e Inteligência Artificial Generativa. O objetivo é simular uma esteira automatizada para um banco, onde dados de clientes são extraídos, servidos via API REST e consumidos por uma IA que atua como Especialista em Marketing para gerar campanhas personalizadas de investimentos. O gerenciamento e validação dos dados no SQL Server foram realizados utilizando o DBeaver.
 
+---
+
 ## 🏗️ Arquitetura da Solução
 
 O projeto foi construído de forma modularizada e desacoplada, utilizando **Docker** para isolamento do banco de dados, e está dividido em três fases principais:
@@ -26,6 +28,8 @@ O projeto foi construído de forma modularizada e desacoplada, utilizando **Dock
    - Integração com a **API da Groq** (utilizando o modelo de baixíssima latência `llama-3.1-8b-instant`).
    - Geração de mensagens de marketing hiper-personalizadas baseadas no nome do cliente.
    - Gravação do histórico das mensagens geradas de volta no SQL Server, alimentando a tabela `tb_mensagens_marketing`.
+
+---
 
 ## ⚙️ Pré-requisitos e Configuração
 
@@ -61,6 +65,8 @@ pip install -r requirements.txt
 
 Para este mini-projeto, foi utilizado o Windows 11. Então antes da execução das aplicações, será necessário instalar o driver oficial da Microsoft: `Microsoft ODBC Driver 18 for SQL Server`.
 
+---
+
 ## 🚀 Execução das aplicações
 
 ### 1. Executar a carga dos dados
@@ -89,6 +95,8 @@ No script do Jupyter Notebook no browser, há uma alteração a ser feita. Acess
 Após essas configurações, pode executar todas as células do script `app_ia.ipynb` cujo resultado é exibido na imagem a seguir:
 
 ![](/images/result_exec_ia.png "Resultado da geração das mensagens personalizadas com IA")
+
+---
 
 ## 🧑‍💼 Contato
 
