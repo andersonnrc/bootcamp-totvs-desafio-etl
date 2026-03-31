@@ -13,14 +13,28 @@ app = Flask(__name__)
 with open('db_config.json', 'r') as f:
     DB_CONFIG = json.load(f)
 
-def obter_conexao():
-    senha_codificada = urllib.parse.quote_plus(DB_CONFIG['password'])
-    string_conexao = (
-        f"mssql+pyodbc://{DB_CONFIG['user']}:{senha_codificada}"
-        f"@{DB_CONFIG['server']}:{DB_CONFIG['port']}/{DB_CONFIG['database']}"
-        "?driver=ODBC+Driver+17+for+SQL+Server"
+def criar_engine():
+    params = urllib.parse.quote_plus(
+        f"DRIVER={{ODBC Driver 18 for SQL Server}};"
+        f"SERVER={DB_CONFIG['server']},{DB_CONFIG['port']};"
+        f"DATABASE={DB_CONFIG['database']};"
+        f"UID={DB_CONFIG['user']};"
+        f"PWD={DB_CONFIG['password']};"
+        f"Encrypt=yes;"
+        f"TrustServerCertificate=yes;"
     )
-    return create_engine(string_conexao)
+
+    string_conexao = f"mssql+pyodbc:///?odbc_connect={params}"
+
+    return create_engine(
+        string_conexao,
+        pool_pre_ping=True,   # evita conexões mortas
+        pool_size=5,          # número de conexões no pool
+        max_overflow=10       # conexões extras se necessário
+    )
+
+# 🔥 Engine global (criada uma única vez)
+engine = criar_engine()
 
 # ==========================================
 # 2. ENDPOINT DA API
@@ -28,18 +42,15 @@ def obter_conexao():
 @app.route('/api/usuarios', methods=['GET'])
 def get_usuarios():
     try:
-        engine = obter_conexao()
-        
         df = pd.read_sql("SELECT id, nome FROM tb_usuarios", engine)
-        
-        # Conversão para lista de dicionários (padrão JSON)
+
         usuarios_json = df.to_dict(orient='records')
-        
+
         return jsonify(usuarios_json), 200
-        
+
     except Exception as e:
         print(f"Erro na API: {e}")
-        return jsonify({"erro": "Falha ao conectar ou consultar o banco de dados."}), 500
+        return jsonify({"erro": "Falha ao consultar o banco de dados."}), 500
 
 # ==========================================
 # 3. EXECUÇÃO DO SERVIDOR

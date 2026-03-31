@@ -32,7 +32,7 @@ O projeto foi construído de forma modularizada e desacoplada, utilizando **Dock
 - Python 3.x
 - Docker (Desktop ou Engine)
 - DBeaver (para administração do banco de dados)
-- Microsoft ODBC Driver 17 for SQL Server
+- Microsoft ODBC Driver 18 for SQL Server
 - Chave de API da [Groq](https://console.groq.com/).
 
 ### 1. Subindo o Banco de Dados (Docker)
@@ -59,7 +59,7 @@ pip install -r requirements.txt
 ```
 ### 4. Instalando o driver oficial da Microsoft para o SQL Server
 
-Para este mini-projeto, foi utilizado o Windows 11. Então antes da execução das aplicações, será necessário instalar o driver oficial da Microsoft: `Microsoft ODBC Driver 17 for SQL Server`. Importante lembrar que já existe uma versão mais atual desse driver. Caso seja instalada a versão 18, será necessário alterar a versão nos códigos onde estão as configurações de conexão do banco de dados.
+Para este mini-projeto, foi utilizado o Windows 11. Então antes da execução das aplicações, será necessário instalar o driver oficial da Microsoft: `Microsoft ODBC Driver 18 for SQL Server`.
 
 ## 🚀 Execução das aplicações
 
